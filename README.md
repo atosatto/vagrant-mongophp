@@ -1,26 +1,4 @@
-# Ambiente di sviluppo con Vagrant #
-
-## Installazione e aggiornamenti ##
-
-Puoi scaricare tutti i file di vagrant con il comando:
-
-	git clone --recursive https://asosso@bitbucket.org/asosso/vagrant-web.git
-
-#### Aggiornamento submoduli ####
-Per aggiornare i submoduli collegati:
-
-	git pull origin master
-	git submodule init
-	git submodule update
-
-Se vuoi forzare l'aggiornamento di ciascun submodulo, anche se non è tracciato nel repository principale:
-
-	git submodule foreach git pull origin master
-        
-## File hosts ##
-
-#### Linux / MacOS X (Automatico) #### 
-Vagrant-webmongo
+vagrant-mongophp
 ===========
 
 Vagrant VirtualMachine providing a Centos 6.3 + Nginx + MongoDB + PHP webapp development stack.
@@ -35,7 +13,7 @@ Install the vagrant-hostsupdater plugin with
 
 Then, clone this project with:
 
-	git clone https://github.com/hilbert-/vagrant-webmongo.git
+	git clone https://github.com/hilbert-/vagrant-mongophp.git
 
 And finally init the submodule needed for the provisioning of all the VM configurations.
 
