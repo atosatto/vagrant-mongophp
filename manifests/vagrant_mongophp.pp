@@ -40,7 +40,7 @@ file {
 ### Setting up the yum repo and packages
 class {
 	'yum':
-		extrarepo => ['nginx', 'remi', 'remi-test', 'epel'],	 
+		extrarepo => ['nginx', 'remi', 'remi-test', 'epel', '10gen'],
 }
 
 ### Nginx
@@ -66,7 +66,10 @@ file {
 }
 
 ### Mongodb
-class { "mongodb": }
+class { "mongodb": 
+	use_10gen => true,
+	require => Class['yum::repo::10gen'],
+}
 
 ### PHP-FPM
 package {
