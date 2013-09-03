@@ -4,8 +4,8 @@ Vagrant.require_plugin('vagrant-hostsupdater')
 
 Vagrant.configure("2") do |config|
 
-	config.vm.box = 'centos-63-64-puppet'
-	config.vm.box_url = 'http://packages.vstone.eu/vagrant-boxes/centos/6.3/centos-6.3-64bit-puppet-vbox.4.2.6-2.box'
+	config.vm.box = 'centos-64-x64-puppet'
+	config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box'
 
 	### VM Specs customization
 	# config.vm.customize ["modifyvm", :id, "--memory", 2048, "--cpus", 2]
@@ -20,11 +20,12 @@ Vagrant.configure("2") do |config|
 	### Puppet configuration
 	config.vm.define :vagrant_mongophp do |project|
 
-		project.vm.hostname = "centos.vagrant.dev"
+		project.vm.hostname = "mongophp.vagrant.dev"
 		project.vm.network :private_network, ip: "33.33.33.20"
+		# project.vm.network :public_network, ip: "192.168.1.8"
 
 		# VM hostname aliases | Require vagrant-hostsupdater (https://github.com/cogitatio/vagrant-hostsupdater)
-		project.hostsupdater.aliases = ["mongophp.dev"]
+		project.hostsupdater.aliases = ["maps.traffico2.dev", "api.traffico2.dev"]
 
 		### Pass installation procedure over to Puppet (see `manifests/project.pp`)
 		project.vm.provision :puppet do |puppet|
