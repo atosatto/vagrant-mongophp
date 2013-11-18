@@ -103,7 +103,7 @@ file {
 file {
 	'/etc/php.ini':
 		ensure	=> file,
-		mode	=> 600,
+		mode	=> 660,
 		source	=> 'puppet:///modules/config-files/php.ini',
 		require	=> Package['php-fpm'],
 		notify  => Service["php-fpm"], 
@@ -145,9 +145,9 @@ exec {
 ### Install of phpunit.phar in /usr/bin
 exec { 
 	"install_phpUnit":
-		command => "wget --output-document=/usr/bin/phpunit.phar http://pear.phpunit.de/get/phpunit.phar && chmod +x /usr/bin/phpunit.phar",
+		command => "wget --output-document=/usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && chmod +x /usr/bin/phpunit.phar",
 		require => [Package['php'], Package['php-pear']],
-		creates => "/usr/bin/phpunit.phar",
+		creates => "/usr/local/bin/phpunit.phar",
 }
 
 ### Welcome messages

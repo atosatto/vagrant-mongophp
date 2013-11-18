@@ -8,14 +8,12 @@ Vagrant.configure("2") do |config|
 	config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box'
 
 	### VM Specs customization
-	# config.vm.customize ["modifyvm", :id, "--memory", 2048, "--cpus", 2]
-
+	config.vm.provider "virtualbox" do |v|
+		v.name = "Vagrant MongoPHP"
+		v.customize ["modifyvm", :id, "--memory", "1024"]
+	end
 	### NFS shared folder | Require nfs-utils  
-	config.vm.synced_folder "data", "/home/vagrant/data", :nfs => true, :extra => 'dmode=777,fmode=777'
-
-	### Needed by slow Virtualbox installations
-	# config.ssh.max_tries = 50
-	# config.ssh.timeout   = 300
+	#config.vm.synced_folder "data", "/home/vagrant/data", :nfs => true, :extra => 'dmode=777,fmode=777'
 
 	### Puppet configuration
 	config.vm.define :vagrant_mongophp do |project|
