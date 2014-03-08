@@ -145,7 +145,7 @@ exec {
 ### Install of phpunit.phar in /usr/bin
 exec { 
 	"install_phpUnit":
-		command => "wget --output-document=/usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && chmod +x /usr/bin/phpunit.phar",
+		command => "wget --output-document=/usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && chmod +x /usr/local/bin/phpunit.phar",
 		require => [Package['php'], Package['php-pear']],
 		creates => "/usr/local/bin/phpunit.phar",
 }
