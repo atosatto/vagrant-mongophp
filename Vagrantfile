@@ -1,21 +1,24 @@
 # Author: Andrea Tosatto <andrea.tosy@gmail.com>
 
-Vagrant.require_plugin('vagrant-hostsupdater')
+### Require plugins
+require 'vagrant-hostsupdater'
 
+### Vagrant configuration
 Vagrant.configure("2") do |config|
 
 	config.vm.box = 'centos-64-x64-puppet'
 	config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box'
 
-	### VM Specs customization
+	### VM Virtualbox specs customization
 	config.vm.provider "virtualbox" do |v|
 		v.name = "Vagrant MongoPHP"
-		v.customize ["modifyvm", :id, "--memory", "1024"]
+		v.customize ["modifyvm", :id, "--memory", "2048"]
 	end
-	### NFS shared folder | Require nfs-utils  
-	#config.vm.synced_folder "data", "/home/vagrant/data", :nfs => true, :extra => 'dmode=777,fmode=777'
 
-	### Puppet configuration
+	### NFS shared folder | Require nfs-utils  
+	config.vm.synced_folder "workspace", "/home/vagrant/workspace", :nfs => true
+
+	### mongophp configuration
 	config.vm.define :vagrant_mongophp do |project|
 
 		project.vm.hostname = "mongophp.vagrant.dev"
