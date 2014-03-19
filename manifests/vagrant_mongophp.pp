@@ -11,7 +11,7 @@ user {
 		ensure  => present,
 		groups  => ['nginx'],
 		require => Package['nginx'],
-		notify  => [Service["nginx"], Service["php-fpm"]]; 
+		notify  => [Service["nginx"], Service["php-fpm"]];
 
 	'nginx':
 		ensure  => present,
@@ -62,11 +62,11 @@ file {
 		mode    => 600,
 		source  => 'puppet:///modules/config-files/nginx.conf',
 		require => Package['nginx'],
-		notify  => Service["nginx"], 
+		notify  => Service["nginx"],
 }
 
 ### Mongodb
-class { "mongodb": 
+class { "mongodb":
 	use_10gen => true,
 	require => Class['yum::repo::10gen'],
 }
@@ -74,18 +74,18 @@ class { "mongodb":
 ### PHP-FPM
 package {
 	'php-fpm':
-		ensure => installed, 
+		ensure => installed,
 		require => Class['yum::repo::remi'],
 }
 
 package {
-	["php-common", "php", "php-pecl-apc", "php-pecl-xdebug", "php-cli", "php-pear", "php-pecl-mongo", "php-pdo", "php-gd", "php-mbstring", "php-xml", "php-imap", "php-mcrypt", "mcrypt", "php-intl", "php-devel", "php-soap"]: 
+	["php-common", "php", "php-pecl-apc", "php-pecl-xdebug", "php-cli", "php-pear", "php-pecl-mongo", "php-pdo", "php-gd", "php-mbstring", "php-xml", "php-imap", "php-mcrypt", "mcrypt", "php-intl", "php-devel", "php-soap"]:
 		ensure => installed,
 		require => [Package['php-fpm'], Class['yum::repo::epel']],
 }
 
 service {
-	'php-fpm': 
+	'php-fpm':
 		enable  => true,
 		ensure  => "running",
 		require => Package['php-fpm'],
@@ -97,7 +97,7 @@ file {
 		mode	=> 600,
 		source	=> 'puppet:///modules/config-files/vagrant.pool.conf',
 		require	=> Package['php-fpm'],
-		notify  => Service["php-fpm"], 
+		notify  => Service["php-fpm"],
 }
 
 file {
@@ -106,7 +106,7 @@ file {
 		mode	=> 660,
 		source	=> 'puppet:///modules/config-files/php.ini',
 		require	=> Package['php-fpm'],
-		notify  => Service["php-fpm"], 
+		notify  => Service["php-fpm"],
 }
 
 ### NFS
@@ -131,11 +131,11 @@ package {
 ### Others Packages
 package {
 	['nano', 'vim-enhanced', 'yum-utils', 'mlocate', 'git', 'curl', 'subversion']:
-		ensure => installed, 
+		ensure => installed,
 }
 
 ### Install of composer.phar in /bin
-exec { 
+exec {
 	"install_composer":
 		command => "curl -s https://getcomposer.org/installer | php -- --install-dir=/bin",
 		require => [Package['curl'], Package['php']],
@@ -143,7 +143,7 @@ exec {
 }
 
 ### Install of phpunit.phar in /usr/bin
-exec { 
+exec {
 	"install_phpUnit":
 		command => "wget --output-document=/usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && chmod +x /usr/local/bin/phpunit.phar",
 		require => [Package['php'], Package['php-pear']],
@@ -172,20 +172,20 @@ case $operatingsystem {
 		centos: {
 
 				package {
-					['bind-utils']: 
+					['bind-utils']:
 						ensure => installed,
 				}
 
-				file { 
+				file {
 					"/etc/selinux/config":
 						ensure  => file,
 						source  => 'puppet:///modules/config-files/selinux.cfg',
 						owner   => root,
 						group   => root,
-						notify  => Exec["disable_selinux"], 
+						notify  => Exec["disable_selinux"],
 				}
 
-				exec { 
+				exec {
 					"disable_selinux":
 						command      => "setenforce 0",
 						refreshonly  => true,
