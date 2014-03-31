@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 	### VM Virtualbox specs customization
 	config.vm.provider "virtualbox" do |v|
 		v.name = "Vagrant MongoPHP"
-		v.customize ["modifyvm", :id, "--memory", "2048"]
+		v.customize ["modifyvm", :id, "--memory", "2048", "--cpus", 2]
 	end
 
 	### NFS shared folder | Require nfs-utils  
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 		# VM hostname aliases | Require vagrant-hostsupdater (https://github.com/cogitatio/vagrant-hostsupdater)
 		project.hostsupdater.aliases = ["maps.traffico2.dev", "api.traffico2.dev"]
 
-		### Pass installation procedure over to Puppet (see `manifests/project.pp`)
+		### Pass installation procedure over to Puppet (see `manifests/vagrant_mongophp.pp`)
 		project.vm.provision :puppet do |puppet|
 			puppet.manifests_path = "manifests"
 			puppet.module_path = "puppet-modules"
