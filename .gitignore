@@ -15,4 +15,7 @@ Thumbs.db
 .idea
 
 ## vagrant-mongophp
+.librarian
 workspace/*
+.tmp/
+modules/

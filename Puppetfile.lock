@@ -1,0 +1,15 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    example42/puppi (2.1.9)
+    example42/yum (2.1.10)
+      example42/puppi (>= 2.0.0)
+    puppetlabs/nginx (99.99.99)
+      puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/stdlib (4.2.1)
+
+DEPENDENCIES
+  example42/yum (>= 0)
+  puppetlabs/nginx (>= 0)
+  puppetlabs/stdlib (>= 0)
+

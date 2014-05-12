@@ -23,15 +23,14 @@ Vagrant.configure("2") do |config|
 
 		project.vm.hostname = "mongophp.vagrant.dev"
 		project.vm.network :private_network, ip: "33.33.33.20"
-		# project.vm.network :public_network, ip: "192.168.1.8"
 
 		# VM hostname aliases | Require vagrant-hostsupdater (https://github.com/cogitatio/vagrant-hostsupdater)
-		project.hostsupdater.aliases = ["api.traffico2.dev"]
+		project.hostsupdater.aliases = ["traffico2.dev"]
 
 		### Pass installation procedure over to Puppet (see `manifests/vagrant_mongophp.pp`)
 		project.vm.provision :puppet do |puppet|
 			puppet.manifests_path = "manifests"
-			puppet.module_path = "puppet-modules"
+			puppet.module_path = "modules"
 			puppet.manifest_file = "vagrant_mongophp.pp"
 			puppet.options = [
 				'--verbose',
