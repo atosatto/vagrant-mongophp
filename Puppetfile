@@ -9,6 +9,7 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/nginx'
 mod 'example42/yum'
+mod 'example42/mongodb'
 mod 'arioch/redis'
 
 # mod 'ntp',
