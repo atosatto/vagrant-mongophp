@@ -16,6 +16,13 @@ Thumbs.db
 
 ## vagrant-mongophp
 .librarian
-workspace/*
 .tmp/
-modules/
+
+## puppet modules
+modules/*
+!modules/config-files
+
+
+## workspace
+workspace/*
+!workspace/README.md
