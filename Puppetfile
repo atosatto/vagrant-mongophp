@@ -10,7 +10,7 @@ mod 'puppetlabs/stdlib'
 mod 'puppetlabs/nginx'
 mod 'example42/yum'
 mod 'example42/mongodb'
-mod 'example42/redis'
+mod 'arioch/redis'
 
 # mod 'ntp',
 #   :git => 'git://github.com/puppetlabs/puppetlabs-ntp.git'

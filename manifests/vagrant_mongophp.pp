@@ -75,7 +75,9 @@ service { 'mongod':
 }
 
 ### Redis
-class { "redis": }
+class { "redis":
+  manage_repo => true,
+}
 
 ### PHP-FPM
 package { 'php-fpm':
