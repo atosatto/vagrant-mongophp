@@ -13,35 +13,28 @@ Install the vagrant-hostsupdater plugin with
 
 Then, clone this project with:
 
-	git clone https://github.com/hilbert-/vagrant-mongophp.git
-
-And finally init the submodule needed for the provisioning of all the VM configurations.
-
-	git submodule init
-
-	git submodule update
-	
+	git clone https://github.com/hilbert-/vagrant-mongophp.git	
 
 Usage
 -----
 
-You can startup the VM with 
-	
+You can startup the VM with
+
 	vagrant up
-	
+
 If you see an error similar to this one
-	
+
 	[vagrant_web] Mounting NFS shared folders...
 	The following SSH command responded with a non-zero exit status.
 	Vagrant assumes that this means the command failed!
 
 	mount -o vers=3 33.33.33.1:'/Users/andrea/Documents/Sviluppo/vagrant-vms/vagrant-webmongo/data' /home/vagrant/data
-	
+
 you have to execute
-	
+
 	vagrant provision
 	vagrant reload
-	
+
 since it is caused by the fact that nfs is not installed on the virtual machine.
 This will be installed during the provisioning.
 
