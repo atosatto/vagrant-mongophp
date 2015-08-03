@@ -75,10 +75,7 @@ service { 'mongod':
 }
 
 ### Redis
-class { 'redis':
-    bind    => '127.0.0.1',
-    require => Class['yum::repo::remi'],
-}
+class { "redis": }
 
 ### PHP-FPM
 package { 'php-fpm':
