@@ -13,7 +13,16 @@ Install the vagrant-hostsupdater plugin with
 
 Then, clone this project with:
 
-	git clone https://github.com/hilbert-/vagrant-mongophp.git	
+	git clone https://github.com/hilbert-/vagrant-mongophp.git
+
+The puppet modules are handled with [librarian-puppet](http://librarian-puppet.com/).
+Install it with
+
+	gem install librarian-puppet
+
+Finally, download the required modules with
+
+	librarian-puppet install
 
 Usage
 -----

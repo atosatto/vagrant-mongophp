@@ -1,5 +1,5 @@
 FORGE
-  remote: http://forge.puppetlabs.com
+  remote: https://forgeapi.puppetlabs.com
   specs:
     arioch/redis (0.0.7)
       puppetlabs/apt (>= 1.4.0)
@@ -18,4 +18,3 @@ DEPENDENCIES
   example42/yum (>= 0)
   puppetlabs/nginx (>= 0)
   puppetlabs/stdlib (>= 0)
-
