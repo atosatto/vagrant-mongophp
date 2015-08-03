@@ -9,6 +9,7 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/nginx'
 mod 'example42/yum'
+mod 'arioch/redis'
 
 # mod 'ntp',
 #   :git => 'git://github.com/puppetlabs/puppetlabs-ntp.git'

@@ -74,6 +74,12 @@ service { 'mongod':
     require => Package['mongodb-org'],
 }
 
+### Redis
+class { 'redis':
+    bind    => '127.0.0.1';
+    require => Class['yum::repo::remi'],
+}
+
 ### PHP-FPM
 package { 'php-fpm':
     ensure  => installed,
