@@ -25,7 +25,12 @@ Vagrant.configure("2") do |config|
 		project.vm.network :private_network, ip: "33.33.33.20"
 
 		# VM hostname aliases | Require vagrant-hostsupdater (https://github.com/cogitatio/vagrant-hostsupdater)
-		project.hostsupdater.aliases = ["traffico2.dev"]
+		project.hostsupdater.aliases = ["myproject.dev"]
+
+		### Install librarian-puppet and the Puppet dependencies
+		project.vm.provision :shell do |shell|
+			shell.inline = "sudo gem install librarian-puppet; cd /vagrant; /usr/local/bin/librarian-puppet install"
+		end
 
 		### Pass installation procedure over to Puppet (see `manifests/vagrant_mongophp.pp`)
 		project.vm.provision :puppet do |puppet|

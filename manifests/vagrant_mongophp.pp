@@ -144,6 +144,12 @@ package { ['nano', 'vim-enhanced', 'yum-utils',
     ensure => latest,
 }
 
+### Disable firewallD
+service { "firewalld":
+  ensure => "stopped",
+  enable => "false"
+}
+
 ### Install of composer.phar in /bin
 exec { 'install_composer':
     command => 'curl -s https://getcomposer.org/installer | php -- --install-dir=/bin',

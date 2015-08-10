@@ -1,5 +1,5 @@
 vagrant-mongophp
-===========
+================
 
 Vagrant VirtualMachine providing a Centos 7 + Nginx + MongoDB + Redis + PHP webapp development stack.
 
@@ -16,12 +16,13 @@ Then, clone this project
 
 	git clone https://github.com/hilbert-/vagrant-mongophp.git
 
-The puppet modules are handled with [librarian-puppet](http://librarian-puppet.com/).
-Install it with
+The puppet modules dependencies are handled with [librarian-puppet](http://librarian-puppet.com/).
+The gem is automatically installed on the guest VM using the vagrant's shell provisioner,
+but if you would like to install it on the host you have to run
 
 	gem install librarian-puppet
 
-Finally, download the required modules running
+and download the required modules with
 
 	librarian-puppet install
 
