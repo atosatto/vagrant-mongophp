@@ -1,22 +1,19 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    arioch-redis (1.1.0)
-      puppetlabs-apt (>= 2.0.1)
-      puppetlabs-stdlib (>= 0)
+    dwerder-redis (1.6.0)
+      puppetlabs-stdlib (>= 4.2.0)
     example42-mongodb (2.0.15)
       example42-puppi (>= 2.0.0)
-    example42-puppi (2.1.11)
+    example42-puppi (2.1.12)
     example42-yum (2.1.18)
       example42-puppi (>= 2.0.0)
-    puppetlabs-apt (2.1.1)
-      puppetlabs-stdlib (< 5.0.0, >= 4.5.0)
     puppetlabs-nginx (99.99.99)
       puppetlabs-stdlib (>= 0.1.6)
     puppetlabs-stdlib (4.7.0)
 
 DEPENDENCIES
-  arioch-redis (>= 0)
+  dwerder-redis (>= 0)
   example42-mongodb (>= 0)
   example42-yum (>= 0)
   puppetlabs-nginx (>= 0)

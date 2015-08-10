@@ -75,8 +75,11 @@ service { 'mongod':
 }
 
 ### Redis
-class { "redis":
-  manage_repo => true,
+class { 'redis::install': }
+
+redis::server { 'master':
+    running => true,
+    enabled => true
 }
 
 ### PHP-FPM
@@ -85,11 +88,11 @@ package { 'php-fpm':
     require => Class['yum::repo::remi'],
 }
 
-package { ['php-common', 'php', 'php-pecl-apc',
+package { ['php-common', 'php', 'php-pecl-apcu',
     'php-pecl-xdebug', 'php-cli', 'php-pear',
     'php-pecl-mongo', 'php-pdo', 'php-gd',
     'php-mbstring', 'php-xml', 'php-imap',
-    'php-mcrypt', 'mcrypt', 'php-intl',
+    'php-mcrypt', 'php-intl',
     'php-devel', 'php-soap']:
     ensure  => installed,
     require => [Package['php-fpm'], Class['yum::repo::epel']],

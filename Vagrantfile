@@ -6,8 +6,8 @@ require 'vagrant-hostsupdater'
 ### Vagrant configuration
 Vagrant.configure("2") do |config|
 
-	config.vm.box = 'puppetlabs/centos-6.5-x86_64-puppet'
-	config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box'
+	config.vm.box = 'puppetlabs/centos-7.0-64-puppet'
+	config.vm.box_version = '1.0.1'
 
 	### VM Virtualbox specs customization
 	config.vm.provider "virtualbox" do |v|
@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 		v.customize ["modifyvm", :id, "--memory", "2048", "--cpus", 2]
 	end
 
-	### NFS shared folder | Require nfs-utils  
+	### NFS shared folder | Require nfs-utils
 	config.vm.synced_folder "workspace", "/home/vagrant/workspace", :nfs => true
 
 	### mongophp configuration
@@ -29,8 +29,8 @@ Vagrant.configure("2") do |config|
 
 		### Pass installation procedure over to Puppet (see `manifests/vagrant_mongophp.pp`)
 		project.vm.provision :puppet do |puppet|
-			puppet.manifests_path = "manifests"
 			puppet.module_path = "modules"
+			puppet.manifests_path = "manifests"
 			puppet.manifest_file = "vagrant_mongophp.pp"
 			puppet.options = [
 				'--verbose',
